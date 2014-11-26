@@ -127,7 +127,7 @@ sub get_screen_names {
 
 }
 
-# is username in whitelist?
+# is username in ignorelist?
 sub is_ignorelisted {
     my $sheep = shift;
     return 0 unless $sheep;
@@ -141,7 +141,7 @@ sub is_ignorelisted {
     return 0;
 }
 
-# get a list of whitelisted users
+# get a list of ignorelisted users
 open W, '<', $ignorelist_file or die "Can't open $ignorelist_file: $!\n";
 foreach (<W>) {
     chomp;
@@ -218,7 +218,7 @@ print "Getting list of usernames from IDs.\n";
 
 get_screen_names( \%problem );
 
-# save to a file, but only if they aren't part of the whitelist.
+# save to a file, but only if they aren't part of the ignorelist.
 print "Saving list of usernames to block_names.txt & shared_names.txt\n";
 open BL, '>block_names.txt'  or die "Can't open block_names.txt: $!\n";
 open SL, '>shared_names.txt' or die "Can't open shared_names.txt: $!\n";
